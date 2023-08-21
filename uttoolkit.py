@@ -163,8 +163,10 @@ def click_button_5_actions():
                     os.remove(utfliepath + "/file8")
                 if checkfile.is_file():
                     os.remove(utfliepath + "/system_information_962")
+                    tk.messagebox.showinfo("*", "*修改完成")
                 elif checkfile1.is_file():
                     os.remove(utfliepath + "/system_information_963")
+                    tk.messagebox.showinfo("*", "*修改完成")
                 else:
                     tk.messagebox.showinfo("*","你并没有出卖自己的灵魂")
         else:
