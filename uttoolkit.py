@@ -38,13 +38,17 @@ window.resizable(0, 0)
 ###################################窗口属性和按钮相关
 def click_button_1_actions():
     utfliepath = a + "/Local/UNDERTALE"# 游戏存档位置
-    try:
+    if os.path.exists(utfliepath) :
+        file = open(utfliepath+"/Packaged_using_UT-toolkit.LLXL","w")
+        file.write("Thank you for using my program!! ——Lin_Ling")
+        file.close()
         RSlib.dozipfile(utfliepath)# 压缩存档文件夹
+        os.remove(utfliepath+"/Packaged_using_UT-toolkit.LLXL")
         zipedutfliename = str(randint(1,10000))# 生成随机存档名
         os.rename(a + "/Local/UNDERTALE.zip",a + "/Local/"+zipedutfliename+".utfile")
         shutil.move(a + "/Local/"+zipedutfliename+".utfile",tk.filedialog.askdirectory(title="选择一个保存位置"))# 获取保存位置
         messagebox.showinfo("提示","存档备份成功\n保存的文件名："+zipedutfliename+".utfile")
-    except FileNotFoundError:
+    else:
         messagebox.showwarning("提示","您似乎没有存档")
 def click_button_2_actions():
     flag2 = False
@@ -76,6 +80,8 @@ def click_button_2_actions():
         flag = False
     checkfile1 = pathlib.Path("./cache/file0")
     checkfile2 = pathlib.Path("./cache/file9")
+    if os.path.exists(utfliepath+"/Packaged_using_UT-toolkit.LLXL"):
+        os.remove(utfliepath+"/Packaged_using_UT-toolkit.LLXL")
     if checkfile1.is_file() and checkfile2.is_file() and os.path.exists("./cache/undertale.ini"):
         flag1 = True
     else:
@@ -259,10 +265,10 @@ def click_button_5_actions():
                 lines[1] = "20" + '\n'# 修改LV
                 lines[2] = "111" + '\n'# 修改血量
                 lines[3] = "111" + '\n'# 修改血量上限
-                lines[4] = "999999" + '\n'# 修改攻防
-                lines[5] = "999999" + '\n'# 修改攻防
-                lines[6] = "999999" + '\n'# 修改攻防
-                lines[7] = "999999" + '\n'# 修改攻防
+                lines[4] = "999999" + '\n'# 修改攻
+                lines[5] = "999999" + '\n'# 修改攻
+                lines[6] = "999999" + '\n'# 修改防
+                lines[7] = "999999" + '\n'# 修改防
                 lines[10] = "100000000000000" + '\n'# 修改金钱
                 lines[28] = "52" + '\n'#修改武器和防具
                 lines[29] = '53' + '\n'#修改武器和防具
@@ -273,10 +279,10 @@ def click_button_5_actions():
             else:
                 with open(utfliepath+"/file0", "r") as file4:
                     lines = file4.readlines()
-                lines[4] = "999999" + '\n'# 修改攻防
-                lines[5] = "999999" + '\n'# 修改攻防
-                lines[6] = "999999" + '\n'# 修改攻防
-                lines[7] = "999999" + '\n'# 修改攻防
+                lines[4] = "999999" + '\n'# 修改攻
+                lines[5] = "999999" + '\n'# 修改攻
+                lines[6] = "999999" + '\n'# 修改防
+                lines[7] = "999999" + '\n'# 修改防
                 lines[10] = "100000000000000" + '\n'# 修改金钱
                 lines[28] = "52" + '\n'#修改武器和防具
                 lines[29] = '53' + '\n'#修改武器和防具
