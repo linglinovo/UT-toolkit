@@ -389,7 +389,7 @@ def click_button_5_actions():
         ###########################一些按钮
         child_window2.mainloop()
     def click_5_actions():
-        tk.messagebox.showinfo("提示","此功能会伪造你已到底某剧情节点\n注意：大范围剧情跨越可能导致修改失效，如：在遗迹里修改剧情至到底雪镇")
+        tk.messagebox.showinfo("提示","此功能会伪造你已到底某剧情节点\n注意：大范围剧情跨越可能导致修改失效，如：在遗迹里修改剧情至到达雪镇")
         utfliepath = a + "/Local/UNDERTALE"
         try:
             tk.messagebox.showinfo("提示", "修改非实时生效，需进入游戏再次存档即可")#提示
