@@ -532,3 +532,5 @@ def click_button_5_actions():
     _button7.pack(pady=10)
     ##########################子窗口的亿些按钮
 window.mainloop()
+# -_-
+# =)
