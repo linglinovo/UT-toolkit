@@ -168,7 +168,7 @@ def click_button_5_actions():
     utfliepath = a + "/Local/UNDERTALE"
     child_window = tk.Toplevel(window)
     child_window.title("其他")
-    child_window.geometry("200x550")
+    child_window.geometry("200x600")
     child_window.resizable(0, 0)
     def click_0_actions():
         utfliepath = a + "/Local/UNDERTALE"
@@ -512,6 +512,53 @@ def click_button_5_actions():
         except FileNotFoundError:
             messagebox.showwarning("提示", "你似乎没有存档")
     def click_7_actions():
+        tk.messagebox.showinfo("提示","此功能会伪造你通关游戏的次数")
+        child_window3 = tk.Toplevel(child_window)
+        child_window3.title("设定won")
+        child_window3.resizable(0, 0)
+        label3 = tk.Label(child_window3, text="提示: won=0 杀死Asgore后会触发Omega Flowey战，大于0则不会", fg="black" ,font=("微软雅黑", 10))
+        label3.pack(side=tk.TOP, pady=5)
+        entry = tk.Entry(child_window3)  # 输入框
+        entry.pack(padx=20, pady=20, side=tk.LEFT)
+
+        def actions():
+            try:
+                flag = False
+                if RSlib.checktask("UNDERTALE.exe"):
+                    if tk.messagebox.askokcancel("提示", "游戏似乎正在运行，要继续吗？"):
+                        flag = True
+                        uttaskpath = RSlib.gettaskpath("UNDERTALE.exe")
+                        RSlib.dokilltask("UNDERTALE.exe")
+                    else:
+                        return None
+                try:
+                    _input = int(entry.get())
+                    if 0 > _input:
+                        tk.messagebox.showwarning("提示", "请输入不小于0的数字")
+                        return None
+                except ValueError:
+                    tk.messagebox.showwarning("提示","请输入整数")
+                    return  None
+                text = f'Won="{_input}"'
+                with open(utfliepath+"/undertale.ini", 'r') as file:
+                    lines = file.readlines()
+                    lines_target = [line for line in lines if "Won" in line]
+                    if lines_target:
+                        lines = [line for line in lines if "Won" not in line]
+                        with open(utfliepath+"/undertale.ini", 'w') as file:
+                            file.writelines(lines)
+                            file.write(text + '\n')
+                    else:
+                        with open(utfliepath+"/undertale.ini", 'a') as file:
+                            file.write(text + '\n')
+                tk.messagebox.showinfo("提示","修改完成")
+                if flag:
+                    os.startfile(uttaskpath)
+            except FileNotFoundError:
+                messagebox.showwarning("提示", "你似乎没有存档")
+        button = tk.Button(child_window3, text="确定", command=actions)
+        button.pack(padx=20, pady=20, side=tk.LEFT)
+    def click_8_actions():
         os.system("notepad" + " " + utfliepath + "/undertale.ini")# 打开存档信息文件
     #########################子窗口的亿些按钮
     _button0 = tk.Button(child_window, text="创建屠杀线残留文件",width=15, command=lambda:click_0_actions(),font=("微软雅黑", 15))
@@ -528,8 +575,10 @@ def click_button_5_actions():
     _button5.pack(pady=10)
     _button6 = tk.Button(child_window, text="修改fun",width=15, command=lambda:click_6_actions(),font=("微软雅黑", 15))
     _button6.pack(pady=10)
-    _button7 = tk.Button(child_window, text="编辑存档信息文件",width=15, command=lambda:click_7_actions(),font=("微软雅黑", 15))
+    _button7 = tk.Button(child_window, text="设定won",width=15, command=lambda:click_7_actions(),font=("微软雅黑", 15))
     _button7.pack(pady=10)
+    _button8 = tk.Button(child_window, text="编辑存档信息文件",width=15, command=lambda:click_8_actions(),font=("微软雅黑", 15))
+    _button8.pack(pady=10)
     ##########################子窗口的亿些按钮
 window.mainloop()
 # -_-
