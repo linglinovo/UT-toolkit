@@ -1,6 +1,6 @@
 # UT-toolkit（undertale-toolkit）
 一个简单的undertale存档备份恢复与管理工具
-提供备份存档，还原备份存档，抹掉存档，修改存档的功能(原谅我功能名字起的过于中二，如果你有啥好名字，请pull requests)
+提供备份存档，还原备份存档，抹掉存档，修改存档的功能
 # 请不要使用steam云存档！！！
 # 导出/备份存档
 此功能会把你目前的undertale存档打包成一个文件并以一个随机文件名保存至在你选定的路径
@@ -11,8 +11,8 @@
 # 删除存档
 此功能会删除你的undertale存档文件夹并把游戏恢复到第一次启动时的状态
 # “其他”
-创建屠杀线残留文件：创建“system_information_963”或者“system_information_962”  
-删除屠杀线残留文件：删除“system_information_963”或者“system_information_962”，使玩家完成屠杀结局后也可以完成真正的和平结局  
+创建屠杀线残留文件：创建“system_information_963”或者“system_information_962” 使玩家不用完成屠杀结局后也可以完成伪善结局，或使真正的和平结局转换为伪善结局  
+删除屠杀线残留文件：删除“system_information_963”或者“system_information_962” 使玩家完成屠杀结局后也可以完成真正的和平结局，或使伪善结局转换为真正的和平结局  
 一键神装：修改存档文件使攻击力至一个离谱的数值  
 修改room：修改room值  
 获取物品：修改物品栏值  
