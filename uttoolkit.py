@@ -173,13 +173,15 @@ def click_button_5_actions():
     def click_0_actions():
         utfliepath = a + "/Local/UNDERTALE"
         tk.messagebox.showinfo("提示","此功能会伪造你已完成屠杀线\n换句话说，会使真和平线变成伪善线")
+        ########################################子窗口
         child_window3 = tk.Toplevel(child_window)
         child_window3.title("选择进度")
         child_window3.resizable(0, 0)
+        ########################################子窗口
         combobox = ttk.Combobox(child_window3)
         combobox.pack(side=tk.LEFT)
         combobox["value"] = ("进入交易（即进入游戏与chara进行交易）","交易完成（即已同意出卖灵魂）")
-        combobox.current(0)
+        combobox.current(0)#选择框
         def actions():
             flag = False
             if RSlib.checktask("UNDERTALE.exe"):
@@ -192,22 +194,22 @@ def click_button_5_actions():
             if combobox.get() == "进入交易（即进入游戏与chara进行交易）":
                 if tk.messagebox.askyesno("警告","此操作会抹掉你的存档"):
                     if not os.path.exists(utfliepath):
-                        os.makedirs(utfliepath)
+                        os.makedirs(utfliepath)# 没存档路径创一个
                     else:
                         shutil.rmtree(utfliepath)
-                        os.makedirs(utfliepath)
-                    file = open(utfliepath + "/system_information_962.tmp", 'w')
-                    file.write("a")
+                        os.makedirs(utfliepath)# 有存档路径删了再创一个
+                    file = open(utfliepath + "/system_information_962.tmp", 'w')# 创建文件
+                    file.write("a")# 写入
                     file.close()
-                    os.rename(utfliepath + "/system_information_962.tmp",utfliepath + "/system_information_962")
+                    os.rename(utfliepath + "/system_information_962.tmp",utfliepath + "/system_information_962")# 重命名
                     tk.messagebox.showinfo("", "修改完成")
             else:
                 if not os.path.exists(utfliepath):
                     os.makedirs(utfliepath)
-                file = open(utfliepath + "/system_information_963.tmp", 'w')
-                file.write("b")
+                file = open(utfliepath + "/system_information_963.tmp", 'w')# 创建文件
+                file.write("b")# 写入
                 file.close()
-                os.rename(utfliepath + "/system_information_963.tmp", utfliepath + "/system_information_963")
+                os.rename(utfliepath + "/system_information_963.tmp", utfliepath + "/system_information_963")# 重命名
                 tk.messagebox.showinfo("", "修改完成")
             if flag:
                 os.startfile(uttaskpath)
